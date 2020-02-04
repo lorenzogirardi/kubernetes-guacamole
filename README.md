@@ -13,9 +13,11 @@ Before deploy you need to specify the following parameters in guacamole folder
 - user and host xml configuration in 04-guacamole-cfm.yaml following https://guacamole.apache.org/doc/gug/configuring-guacamole.html#user-mapping
 
 
-To deploy
-kubectl apply -f guacd
-kubectl apply -f guacamole
+To deploy  
+
+> kubectl apply -f guacd  
+
+> kubectl apply -f guacamole
 
 
 
