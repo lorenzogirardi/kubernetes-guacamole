@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guacamole-conf
+  namespace: guacamole
+data:
+  user-mapping.xml: |
+    <user-mapping>
+    <authorize 
+    username="YOUR_USERNAME" 
+    password="YOUR_MD5_PWD" 
+    encoding="md5">
+    <connection name="serverlinux1">
+    <protocol>ssh</protocol>
+    <param name="hostname">10.10.0.1</param>
+    <param name="port">22</param>
+    <param name="username">root</param>
+    </connection>
+    <connection name="serverwindows1">
+    <protocol>rdp</protocol>
+    <param name="hostname">10.10.0.2</param>
+    <param name="port">3389</param>
+    <param name="username">Administrator</param>
+    <param name="ignore-cert">true</param>
+    </connection>
+    </authorize>
+    </user-mapping>
+

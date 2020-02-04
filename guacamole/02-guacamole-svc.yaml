@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: guacamole-svc
+  namespace: guacamole
+  labels:
+    run: guacamole
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: guacamole

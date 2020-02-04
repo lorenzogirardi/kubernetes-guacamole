@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: guacamole
+  namespace: guacamole
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: guacamole
+  template:
+    metadata:
+      labels:
+        run: guacamole
+    spec:
+      containers:
+      - name: guacamole
+        image: guacamole/guacamole:1.1.0
+        env:
+          - name: GUACD_HOSTNAME
+            value: "guacd-svc.guacd"
+          - name: GUACD_PORT
+            value: "4822"
+          - name: GUACAMOLE_HOME
+            value: "/etc/guacamole/"  
+        ports:
+        - name: http
+          containerPort: 8080
+        volumeMounts:
+        - name: guacamole-conf
+          mountPath: /etc/guacamole/          
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 45
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 2
+          timeoutSeconds: 10
+      volumes:
+        - name: guacamole-conf 
+          configMap:
+            name: guacamole-conf  
