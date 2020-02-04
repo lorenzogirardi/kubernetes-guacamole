@@ -10,7 +10,7 @@ The main idea is to use the **user-mapping.xml** as a config map
 Before deploy you need to specify the following parameters in guacamole folder 
 
 - YOUR_DOMAIN to reflect your domain url in 03-guacamole-ing.yaml
-- user and host xml configuration in 04-guacamole-cfm.yaml following https://guacamole.apache.org/doc/gug/configuring-guacamole.html#user-mapping
+- user YOUR_USERNAME / YOUR_MD5_PWD and hosts xml configuration in 04-guacamole-cfm.yaml following https://guacamole.apache.org/doc/gug/configuring-guacamole.html#user-mapping
 
 
 To deploy  
