@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: guacamole
-        image: guacamole/guacamole:1.1.0
+        image: guacamole/guacamole:1.2.0
         env:
           - name: GUACD_HOSTNAME
             value: "guacd-svc.guacd"
