@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: guacamole
-        image: guacamole/guacamole:1.2.0
+        image: guacamole/guacamole:1.3.0
         env:
           - name: GUACD_HOSTNAME
             value: "guacd-svc.guacd"
@@ -34,13 +34,13 @@ spec:
           mountPath: /etc/guacamole/          
         livenessProbe:
           httpGet:
-            path: /
+            path: /guacamole/
             port: 8080
           initialDelaySeconds: 45
           timeoutSeconds: 10
         readinessProbe:
           httpGet:
-            path: /
+            path: /guacamole/
             port: 8080
           initialDelaySeconds: 2
           timeoutSeconds: 10
